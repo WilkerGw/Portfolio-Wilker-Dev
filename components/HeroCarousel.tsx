@@ -73,9 +73,9 @@ export default function HeroCarousel() {
     const ActiveIcon = devices[currentIndex].Icon
 
     return (
-        <div className="relative w-full max-w-[600px] h-[240px] sm:h-[300px] md:h-auto md:aspect-[4/3] flex items-center justify-center perspective-[1000px] mt-4 lg:mt-0">
+        <div className="relative w-full max-w-[600px] h-[240px] sm:h-[300px] md:h-auto md:aspect-[4/3] flex items-center justify-center perspective-[1000px]">
             {/* Responsiveness Indicator Badges */}
-            <motion.div 
+            <motion.div
                 className="absolute top-0 right-4 md:-right-8 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-3 flex flex-col items-center gap-2 z-40 hidden sm:flex"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -86,7 +86,7 @@ export default function HeroCarousel() {
                     Auto-Scale
                 </div>
                 {devices.map((dev, i) => (
-                    <div 
+                    <div
                         key={dev.label}
                         className={`w-full flex items-center justify-between gap-4 px-2 py-1.5 rounded-lg transition-colors duration-300 ${i === currentIndex ? 'bg-accent/10 text-accent border border-accent/20' : 'text-muted/50 border border-transparent'}`}
                     >
@@ -120,7 +120,7 @@ export default function HeroCarousel() {
             })}
 
             {/* Bottom Responsive Badge */}
-            <motion.div 
+            <motion.div
                 className="absolute -bottom-2 sm:-bottom-4 md:bottom-0 left-1/2 -translate-x-1/2 bg-fg/40 border border-white/10 backdrop-blur-md rounded-full px-4 sm:px-5 py-2 sm:py-2.5 flex items-center gap-2 sm:gap-3 shadow-2xl z-40 whitespace-nowrap"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -139,7 +139,7 @@ export default function HeroCarousel() {
                         </motion.div>
                     </AnimatePresence>
                     <AnimatePresence mode="wait">
-                        <motion.span 
+                        <motion.span
                             key={currentIndex}
                             initial={{ opacity: 0, y: 5 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -152,7 +152,7 @@ export default function HeroCarousel() {
                     </AnimatePresence>
                 </div>
                 <div className="w-[1px] h-3 bg-white/20" />
-                <span className="text-[9px] sm:text-[10px] text-muted font-mono tracking-widest uppercase">100% Responsivo</span>
+                <span className="text-[9px] sm:text-[10px] text-white font-mono tracking-widest uppercase">100% Responsivo</span>
             </motion.div>
         </div>
     )

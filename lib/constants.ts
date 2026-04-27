@@ -103,25 +103,6 @@ export const projects: Project[] = [
         ],
     },
     {
-        id: 4,
-        title: 'Loja Virtual Vizz',
-        description:
-            'E-commerce completo focado no varejo óptico, integrando catálogo de armações, filtros por marca e formato, e sistema de finalização de compra. A interface foi otimizada para uma jornada de compra fluida e segura.',
-        tags: ['Nuvemshop', 'E-commerce', 'UX Design'],
-        span: 'col-span-12 md:col-span-5',
-        link: 'https://oticasvizz.lojavirtualnuvem.com.br/',
-        pattern:
-            'radial-gradient(circle at 10% 20%, rgba(124,255,203,0.04) 0%, transparent 50%)',
-        image: '/images/projects/loja-virtual-vizz-desktop.webp',
-        mobileImage: '/images/projects/loja-virtual-vizz-mobile.webp',
-        metrics: [
-            { value: 92, label: 'Conversão' },
-            { value: 97, label: 'Mobile-first' },
-            { value: 100, label: 'Segurança' },
-            { value: 95, label: 'SEO' },
-        ],
-    },
-    {
         id: 5,
         title: 'ImobPremium',
         description:

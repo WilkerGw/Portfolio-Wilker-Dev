@@ -120,7 +120,7 @@ export default function HeroSection() {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex-1 w-full flex justify-center lg:justify-end mt-8 lg:mt-0 pb-8 lg:pb-0"
+                    className="flex-1 w-full flex justify-center lg:justify-end pb-8 lg:pb-0"
                 >
                     <HeroCarousel />
                 </motion.div>
