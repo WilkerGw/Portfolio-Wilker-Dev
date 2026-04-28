@@ -3,6 +3,7 @@
    ═══════════════════════════════════════════ */
 
 // ─── Tipos ────────────────────────────────
+import { IconType } from 'react-icons'
 
 export interface Project {
     id: number
@@ -35,7 +36,7 @@ export interface SocialLink {
 }
 
 export interface Stat {
-    value: string
+    icon: IconType
     label: string
 }
 
@@ -51,7 +52,7 @@ export const projects: Project[] = [
         description:
             'Landing page didática sobre lentes de grau, seus tipos, tratamentos e índices de refração. A página também conta com um chatbot de inteligência artificial e botões de call actions em todas as seções.',
         tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-        span: 'col-span-12 md:col-span-5',
+        span: 'col-span-12 md:col-span-6',
         link: 'https://www.oticasvizz.com.br/',
         pattern:
             'radial-gradient(circle at 50% 50%, rgba(124,255,203,0.06) 0%, transparent 80%)',
@@ -70,7 +71,7 @@ export const projects: Project[] = [
         description:
             'Landing page de alta conversão para o setor automotivo, focada em captura de leads e apresentação de estoque. Apresenta interface moderna com filtragem dinâmica e integração direta para contato via WhatsApp.',
         tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-        span: 'col-span-12 md:col-span-7',
+        span: 'col-span-12 md:col-span-6',
         link: 'https://lp-multimarcas.vercel.app/',
         pattern:
             'radial-gradient(circle at 30% 70%, rgba(124,255,203,0.04) 0%, transparent 60%)',
@@ -89,7 +90,7 @@ export const projects: Project[] = [
         description:
             'Sistema de gestão especializado para setor óptico. O ERP centraliza o controle de estoque, PDV, agendamentos e prontuários de optometria, com geração automatizada de ordens de serviço e armazenamento seguro em nuvem.',
         tags: ['.NET', 'React', 'Supabase', 'Tailwind CSS'],
-        span: 'col-span-12 md:col-span-7',
+        span: 'col-span-12 md:col-span-6',
         link: '#',
         pattern:
             'radial-gradient(circle at 70% 30%, rgba(124,255,203,0.05) 0%, transparent 70%)',
@@ -108,7 +109,7 @@ export const projects: Project[] = [
         description:
             'Plataforma imobiliária de alto padrão focada no mercado paulistano. O site reúne curadoria de mais de 1.200 imóveis, busca com filtros dinâmicos, integração com WhatsApp, blog de conteúdo e perfis de corretores especializados.',
         tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-        span: 'col-span-12 md:col-span-7',
+        span: 'col-span-12 md:col-span-6',
         link: 'https://imob-premium-delta.vercel.app/',
         pattern:
             'radial-gradient(circle at 60% 40%, rgba(124,255,203,0.05) 0%, transparent 65%)',
@@ -188,11 +189,28 @@ export const socialLinks: SocialLink[] = [
 
 // ─── Stats ────────────────────────────────
 
+import {
+    SiHtml5,
+    SiCss,
+    SiJavascript,
+    SiTypescript,
+    SiNodedotjs,
+    SiReact,
+    SiNextdotjs,
+    SiN8N,
+    SiTailwindcss
+} from 'react-icons/si'
+
 export const stats: Stat[] = [
-    { value: '+30', label: 'Projetos entregues' },
-    { value: '5+', label: 'Anos de experiência' },
-    { value: '100%', label: 'Comprometimento' },
-    { value: '∞', label: 'Linhas de código' },
+    { icon: SiHtml5, label: 'HTML' },
+    { icon: SiCss, label: 'CSS' },
+    { icon: SiJavascript, label: 'JavaScript' },
+    { icon: SiTypescript, label: 'TypeScript' },
+    { icon: SiNodedotjs, label: 'Node.js' },
+    { icon: SiReact, label: 'React.js' },
+    { icon: SiNextdotjs, label: 'Next.js' },
+    { icon: SiTailwindcss, label: 'Tailwind CSS' },
+    { icon: SiN8N, label: 'N8n' },
 ]
 
 // ─── Navegação ────────────────────────────

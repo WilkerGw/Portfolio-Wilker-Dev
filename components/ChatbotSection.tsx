@@ -146,7 +146,7 @@ export default function ChatbotSection() {
                     <a
                         href="https://wa.me/5511967173625?text=Olá! Gostaria de falar sobre chatbots para minha empresa."
                         target="_blank"
-                        className="inline-flex items-center gap-3 bg-accent text-bg px-6 py-3 rounded-full font-syne font-bold text-sm hover:scale-105 hover:shadow-[0_0_30px_-5px_var(--color-accent)] transition-all group"
+                        className="inline-flex items-center gap-3 bg-accent text-bg px-6 py-3 font-syne font-bold text-sm hover:scale-105 hover:shadow-[0_0_30px_-5px_var(--color-accent)] transition-all group"
                     >
                         Falar com Especialista
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

@@ -4,9 +4,27 @@ import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { stats } from '@/lib/constants'
 import Image from 'next/image'
 
+import { motion } from 'framer-motion'
+
 export default function AboutSection() {
     const photoRef = useScrollReveal()
     const textRef = useScrollReveal()
+
+    // Variantes para animação de entrada em cascata
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    }
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 }
+    }
 
     return (
         <section id="about" className="px-6 md:px-12 py-16 md:py-[100px]">
@@ -35,31 +53,64 @@ export default function AboutSection() {
                         Construindo a web com propósito
                     </h2>
                     <p className="text-sm leading-[1.9] text-muted mb-8">
-                        Trabalho com{' '}
-                        <span className="text-fg">React, Next.js e Node.js</span> no core,
-                        mas a stack é consequência da necessidade — não o contrário. O que
-                        me move é{' '}
-                        <span className="text-fg">resolver problemas com código limpo</span>{' '}
-                        e entregar interfaces que as pessoas realmente usam.
+                        Possuo projetos desenvolvidos que variam de landing pages a sistemas web com banco de dados.
                     </p>
 
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-2 border border-white/[0.07]">
+                    {/* Stats Grid - 3x3 for 9 items */}
+                    <motion.div 
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        className="grid grid-cols-3 border border-white/[0.07]"
+                    >
                         {stats.map((stat, i) => (
-                            <div
+                            <motion.div
                                 key={i}
-                                className={`bg-bg p-5 md:p-6 hover:bg-bg2 transition-colors ${i < 2 ? 'border-b border-white/[0.07]' : ''
-                                    } ${i % 2 === 0 ? 'border-r border-white/[0.07]' : ''}`}
+                                variants={itemVariants}
+                                whileHover={{ 
+                                    backgroundColor: "rgba(255, 255, 255, 0.03)",
+                                    transition: { duration: 0.2 }
+                                }}
+                                className={`bg-bg p-4 md:p-6 flex flex-col items-center justify-center text-center group transition-colors relative overflow-hidden ${
+                                    i < 6 ? 'border-b border-white/[0.07]' : ''
+                                } ${(i + 1) % 3 !== 0 ? 'border-r border-white/[0.07]' : ''}`}
                             >
-                                <span className="font-syne text-3xl md:text-4xl font-extrabold text-accent leading-none block mb-2">
-                                    {stat.value}
-                                </span>
-                                <span className="text-[11px] uppercase tracking-wider text-muted font-mono">
+                                {/* Background glow effect on hover */}
+                                <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/[0.02] transition-colors duration-300" />
+                                
+                                <div className="text-accent mb-3 block relative z-10">
+                                    <motion.div 
+                                        animate={{ 
+                                            scale: [1, 1.08, 1],
+                                            filter: [
+                                                'drop-shadow(0 0 0px rgba(20, 241, 149, 0))',
+                                                'drop-shadow(0 0 12px rgba(20, 241, 149, 0.4))',
+                                                'drop-shadow(0 0 0px rgba(20, 241, 149, 0))'
+                                            ],
+                                            color: ['#14f195', '#ffffff', '#14f195']
+                                        }}
+                                        transition={{
+                                            duration: 4,
+                                            repeat: Infinity,
+                                            ease: "easeInOut",
+                                            delay: i * 0.3
+                                        }}
+                                        whileHover={{ 
+                                            scale: 1.15,
+                                            transition: { duration: 0.2 }
+                                        }}
+                                        className="w-fit h-fit mx-auto flex items-center justify-center"
+                                    >
+                                        <stat.icon className="w-7 h-7 md:w-9 md:h-9" />
+                                    </motion.div>
+                                </div>
+                                <span className="text-[9px] md:text-[10px] uppercase tracking-wider text-muted font-mono relative z-10 group-hover:text-white transition-colors duration-300">
                                     {stat.label}
                                 </span>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

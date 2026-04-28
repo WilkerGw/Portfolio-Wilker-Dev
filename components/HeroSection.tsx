@@ -66,13 +66,7 @@ export default function HeroSection() {
                     animate="show"
                     className="flex-1 w-full max-w-2xl"
                 >
-                    {/* Tag */}
-                    <motion.p
-                        variants={item}
-                        className="text-[11px] uppercase tracking-widest2 text-accent mb-5 font-mono"
-                    >
-                        ↳ Disponível para projetos — 2026
-                    </motion.p>
+
 
                     {/* Name */}
                     <motion.h1
@@ -94,12 +88,11 @@ export default function HeroSection() {
                         variants={item}
                         className="max-w-[460px] text-sm leading-[1.8] text-muted mt-4 mb-8"
                     >
-                        Transformo ideias em experiências digitais que funcionam. Código limpo,
-                        design intencional e soluções que geram resultado.
+                        Desenvolvedor Web Full Stack.
                     </motion.p>
 
-                    {/* Buttons */}
-                    <motion.div variants={item} className="flex flex-wrap gap-4">
+                    {/* Buttons (Desktop Only) */}
+                    <motion.div variants={item} className="hidden lg:flex flex-wrap gap-4">
                         <a
                             href="#projects"
                             className="bg-accent text-bg font-mono text-[11px] uppercase tracking-wider font-medium px-7 py-3.5 hover:bg-fg transition-colors"
@@ -120,9 +113,30 @@ export default function HeroSection() {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex-1 w-full flex justify-center lg:justify-end pb-8 lg:pb-0"
+                    className="flex-1 w-full flex flex-col items-center lg:items-end gap-10 pb-8 lg:pb-0"
                 >
                     <HeroCarousel />
+                    
+                    {/* Buttons (Mobile Only) */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8 }}
+                        className="flex lg:hidden flex-wrap justify-center gap-4 w-full"
+                    >
+                        <a
+                            href="#projects"
+                            className="bg-accent text-bg font-mono text-[11px] uppercase tracking-wider font-medium px-7 py-3.5 hover:bg-fg transition-colors"
+                        >
+                            Ver projetos
+                        </a>
+                        <a
+                            href="#contact"
+                            className="border border-white/10 text-muted font-mono text-[11px] uppercase tracking-wider px-7 py-3.5 hover:text-fg hover:border-white/20 transition-colors"
+                        >
+                            Fale comigo
+                        </a>
+                    </motion.div>
                 </motion.div>
             </div>
 
