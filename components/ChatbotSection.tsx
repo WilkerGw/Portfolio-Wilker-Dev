@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, type RefObject } from 'react'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { MessageSquare, Zap, Target, TrendingUp, DollarSign, ArrowRight } from 'lucide-react'
 
@@ -36,7 +36,7 @@ const benefits = [
         title: "Vendas Automáticas",
         description: "O bot fecha negócios por você, sem demora.",
         icon: TrendingUp,
-        color: "#7cffcb"
+        color: "var(--color-accent)"
     }
 ]
 
@@ -66,7 +66,7 @@ export default function ChatbotSection() {
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
                 {/* Left Column: Simulator */}
-                <div ref={refLeft as any} className="reveal-left order-2 lg:order-1 relative flex justify-center">
+                <div ref={refLeft as RefObject<HTMLDivElement>} className="reveal-left order-2 lg:order-1 relative flex justify-center">
                     <div className="relative w-full max-w-[280px] bg-bg2 rounded-[32px] border-[6px] border-white/5 aspect-[9/16] overflow-hidden shadow-2xl shadow-accent/5">
                         {/* Phone Header */}
                         <div className="bg-white/3 px-4 py-3 border-b border-white/5 flex items-center gap-2.5">
@@ -119,7 +119,7 @@ export default function ChatbotSection() {
                 </div>
 
                 {/* Right Column: Content */}
-                <div ref={refRight as any} className="reveal-right order-1 lg:order-2">
+                <div ref={refRight as RefObject<HTMLDivElement>} className="reveal-right order-1 lg:order-2">
                     <p className="text-[10px] uppercase tracking-widest2 text-accent mb-3 font-mono">
                         Evolução Digital
                     </p>

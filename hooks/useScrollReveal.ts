@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 
 export function useScrollReveal(options: IntersectionObserverInit = {}) {
     const ref = useRef<HTMLElement>(null)
+    const { root = null, rootMargin = '0px 0px -60px 0px', threshold = 0.1 } = options
 
     useEffect(() => {
         const el = ref.current
@@ -16,12 +17,12 @@ export function useScrollReveal(options: IntersectionObserverInit = {}) {
                     observer.unobserve(el)
                 }
             },
-            { threshold: 0.1, rootMargin: '0px 0px -60px 0px', ...options }
+            { root, rootMargin, threshold }
         )
 
         observer.observe(el)
         return () => observer.disconnect()
-    }, [])
+    }, [root, rootMargin, threshold])
 
     return ref
 }

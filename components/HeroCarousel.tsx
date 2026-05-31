@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { Monitor, Smartphone, Tablet, Expand } from 'lucide-react'
+import { Monitor, Smartphone, Tablet } from 'lucide-react'
 
 const devices = [
     { src: '/images/laptop.webp', label: 'Desktop', res: '1920x1080', Icon: Monitor },

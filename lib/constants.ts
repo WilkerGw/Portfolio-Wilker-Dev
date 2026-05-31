@@ -1,21 +1,35 @@
-/* ═══════════════════════════════════════════
-   DADOS ESTÁTICOS — Edite seus dados aqui
-   ═══════════════════════════════════════════ */
-
-// ─── Tipos ────────────────────────────────
 import { IconType } from 'react-icons'
+import {
+    SiCss,
+    SiHtml5,
+    SiJavascript,
+    SiN8N,
+    SiNextdotjs,
+    SiNodedotjs,
+    SiReact,
+    SiTailwindcss,
+    SiTypescript,
+} from 'react-icons/si'
+
+export interface ProjectMetric {
+    value: number
+    label: string
+}
 
 export interface Project {
     id: number
+    kicker: string
     title: string
+    result: string
     description: string
     tags: string[]
+    highlights: string[]
+    metrics: ProjectMetric[]
     span: string
     link: string
-    pattern: string // CSS background pattern
-    image?: string // Caminho para a imagem de thumbnail
-    mobileImage?: string // Caminho para a imagem versão mobile
-    metrics?: { value: number; label: string }[] // Lighthouse metrics
+    pattern: string
+    image: string
+    mobileImage: string
 }
 
 export interface Skill {
@@ -40,102 +54,137 @@ export interface Stat {
     label: string
 }
 
-// ─── Projetos ─────────────────────────────
-// Para trocar: edite os campos abaixo com seus projetos reais.
-// O campo "pattern" define o fundo visual do card via CSS.
-// O campo "span" controla a largura na grid (col-span-7 ou col-span-5).
+export const heroTags = [
+    'SEO',
+    'Desempenho',
+    'Acessibilidade',
+    'Responsividade mobile',
+    '90+ PageSpeed',
+]
 
 export const projects: Project[] = [
     {
         id: 1,
+        kicker: 'Landing page educacional',
         title: 'Óticas Vizz',
+        result: 'Conteúdo técnico transformado em uma experiência clara para venda consultiva.',
         description:
-            'Landing page didática sobre lentes de grau, seus tipos, tratamentos e índices de refração. A página também conta com um chatbot de inteligência artificial e botões de call actions em todas as seções.',
-        tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-        span: 'col-span-12 md:col-span-6',
-        link: 'https://www.oticasvizz.com.br/',
-        pattern:
-            'radial-gradient(circle at 50% 50%, rgba(124,255,203,0.06) 0%, transparent 80%)',
-        image: '/images/projects/site-vizz-desktop.webp',
-        mobileImage: '/images/projects/site-vizz-mobile.webp',
+            'Página didática sobre lentes de grau, tratamentos e índices de refração, com chatbot de inteligência artificial, CTAs por seção e layout responsivo para capturar contatos qualificados.',
+        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Chatbot IA'],
+        highlights: ['Arquitetura SEO', 'CTA por seção', 'Design responsivo'],
         metrics: [
             { value: 100, label: 'Desempenho' },
             { value: 100, label: 'Acessibilidade' },
-            { value: 100, label: 'Práticas recomendadas' },
+            { value: 100, label: 'Boas práticas' },
             { value: 100, label: 'SEO' },
         ],
+        span: 'col-span-12',
+        link: 'https://www.oticasvizz.com.br/',
+        pattern:
+            'linear-gradient(135deg, rgba(103,150,81,0.12), rgba(103,150,81,0.02))',
+        image: '/images/projects/site-vizz-desktop.webp',
+        mobileImage: '/images/projects/site-vizz-mobile.webp',
     },
     {
         id: 2,
+        kicker: 'Captação automotiva',
         title: 'Multimarcas',
+        result: 'Interface focada em leads para transformar interesse em conversa pelo WhatsApp.',
         description:
-            'Landing page de alta conversão para o setor automotivo, focada em captura de leads e apresentação de estoque. Apresenta interface moderna com filtragem dinâmica e integração direta para contato via WhatsApp.',
-        tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-        span: 'col-span-12 md:col-span-6',
-        link: 'https://lp-multimarcas.vercel.app/',
-        pattern:
-            'radial-gradient(circle at 30% 70%, rgba(124,255,203,0.04) 0%, transparent 60%)',
-        image: '/images/projects/multimarcas-desktop.webp',
-        mobileImage: '/images/projects/multimarcas-mobile.webp',
+            'Landing page automotiva com apresentação de estoque, filtros visuais, hierarquia direta e integração para contato rápido, mantendo performance e leitura simples em telas pequenas.',
+        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'WhatsApp'],
+        highlights: ['Fluxo de lead', 'Estoque escaneável', 'Mobile first'],
         metrics: [
             { value: 100, label: 'Desempenho' },
             { value: 100, label: 'Acessibilidade' },
-            { value: 100, label: 'Práticas recomendadas' },
+            { value: 100, label: 'Boas práticas' },
             { value: 100, label: 'SEO' },
         ],
+        span: 'col-span-12',
+        link: 'https://lp-multimarcas.vercel.app/',
+        pattern:
+            'linear-gradient(135deg, rgba(103,150,81,0.1), rgba(103,150,81,0.025))',
+        image: '/images/projects/multimarcas-desktop.webp',
+        mobileImage: '/images/projects/multimarcas-mobile.webp',
     },
     {
         id: 3,
+        kicker: 'Sistema de gestão',
         title: 'Mind ERP',
+        result: 'Operação óptica centralizada em uma plataforma com estoque, PDV e atendimento.',
         description:
-            'Sistema de gestão especializado para setor óptico. O ERP centraliza o controle de estoque, PDV, agendamentos e prontuários de optometria, com geração automatizada de ordens de serviço e armazenamento seguro em nuvem.',
+            'ERP para o setor óptico com controle de estoque, PDV, agendamentos, prontuários de optometria, ordens de serviço automatizadas e armazenamento seguro em nuvem.',
         tags: ['.NET', 'React', 'Supabase', 'Tailwind CSS'],
-        span: 'col-span-12 md:col-span-6',
-        link: '#',
-        pattern:
-            'radial-gradient(circle at 70% 30%, rgba(124,255,203,0.05) 0%, transparent 70%)',
-        image: '/images/projects/mind-erp-desktop.webp',
-        mobileImage: '/images/projects/mind-erp-mobile.webp',
+        highlights: ['Gestão de estoque', 'Prontuários', 'Nuvem segura'],
         metrics: [
             { value: 96, label: 'Segurança' },
             { value: 100, label: 'Disponibilidade' },
             { value: 94, label: 'Uptime' },
             { value: 90, label: 'Eficiência' },
         ],
+        span: 'col-span-12',
+        link: '#',
+        pattern:
+            'linear-gradient(135deg, rgba(103,150,81,0.11), rgba(103,150,81,0.018))',
+        image: '/images/projects/mind-erp-desktop.webp',
+        mobileImage: '/images/projects/mind-erp-mobile.webp',
     },
     {
-        id: 5,
+        id: 4,
+        kicker: 'Imobiliária premium',
         title: 'ImobPremium',
+        result: 'Busca imobiliária elegante para imóveis de alto padrão em São Paulo.',
         description:
-            'Plataforma imobiliária de alto padrão focada no mercado paulistano. O site reúne curadoria de mais de 1.200 imóveis, busca com filtros dinâmicos, integração com WhatsApp, blog de conteúdo e perfis de corretores especializados.',
-        tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-        span: 'col-span-12 md:col-span-6',
-        link: 'https://imob-premium-delta.vercel.app/',
-        pattern:
-            'radial-gradient(circle at 60% 40%, rgba(124,255,203,0.05) 0%, transparent 65%)',
-        image: '/images/projects/imob-premium-desktop.webp',
-        mobileImage: '/images/projects/imob-premium-mobile.webp',
+            'Plataforma imobiliária com curadoria de imóveis, filtros dinâmicos, integração com WhatsApp, blog de conteúdo e perfis de corretores especializados.',
+        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'SEO'],
+        highlights: ['Filtros dinâmicos', 'Blog integrado', 'Perfis de corretores'],
         metrics: [
             { value: 100, label: 'Desempenho' },
             { value: 100, label: 'Acessibilidade' },
-            { value: 100, label: 'Práticas recomendadas' },
+            { value: 100, label: 'Boas práticas' },
             { value: 100, label: 'SEO' },
         ],
+        span: 'col-span-12',
+        link: 'https://imob-premium-delta.vercel.app/',
+        pattern:
+            'linear-gradient(135deg, rgba(103,150,81,0.095), rgba(103,150,81,0.02))',
+        image: '/images/projects/imob-premium-desktop.webp',
+        mobileImage: '/images/projects/imob-premium-mobile.webp',
+    },
+    {
+        id: 5,
+        kicker: 'Loja virtual',
+        title: 'Loja Virtual Vizz',
+        result: 'Experiência de compra responsiva para vender com clareza em desktop e mobile.',
+        description:
+            'Interface de e-commerce com vitrine visual, leitura rápida dos produtos, fluxo direto para decisão de compra e adaptação consistente entre notebook e smartphone.',
+        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'E-commerce'],
+        highlights: ['Vitrine responsiva', 'Compra guiada', 'Visual comercial'],
+        metrics: [
+            { value: 98, label: 'Desempenho' },
+            { value: 100, label: 'Acessibilidade' },
+            { value: 96, label: 'Boas práticas' },
+            { value: 100, label: 'SEO' },
+        ],
+        span: 'col-span-12',
+        link: '#',
+        pattern:
+            'linear-gradient(135deg, rgba(103,150,81,0.12), rgba(103,150,81,0.016))',
+        image: '/images/projects/loja-virtual-vizz-desktop.webp',
+        mobileImage: '/images/projects/loja-virtual-vizz-mobile.webp',
     },
 ]
 
-// ─── Skills ───────────────────────────────
-
 export const skills: Skill[] = [
     {
-        icon: '⬡',
+        icon: '↗',
         title: 'Front-End',
         description:
             'Interfaces rápidas e interativas com foco em experiência do usuário e performance.',
         tags: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
     },
     {
-        icon: '◈',
+        icon: '●',
         title: 'Back-End',
         description:
             'APIs robustas e escaláveis com arquitetura limpa e integração de banco de dados.',
@@ -149,36 +198,31 @@ export const skills: Skill[] = [
         tags: ['Figma', 'Prototipagem', 'Design System'],
     },
     {
-        icon: '◎',
-        title: 'DevOps & Deploy',
+        icon: '◌',
+        title: 'Deploy',
         description:
-            'Pipeline de entrega contínua com monitoramento, testes automatizados e infraestrutura confiável.',
-        tags: ['Vercel', 'AWS', 'GitHub Actions'],
+            'Publicação, otimização e acompanhamento para manter páginas rápidas e estáveis.',
+        tags: ['Vercel', 'GitHub Actions', 'Core Web Vitals'],
     },
 ]
 
-// ─── Serviços ─────────────────────────────
-
 export const services: Service[] = [
     {
-        title: 'Desenvolvimento de Sites',
+        title: 'Landing pages',
         description:
-            'Sites institucionais, landing pages e portfólios com design sob medida e performance otimizada.',
+            'Páginas comerciais com copy objetiva, hierarquia forte e foco em conversão.',
     },
     {
-        title: 'Sistemas & Aplicações Web',
+        title: 'Sistemas web',
         description:
-            'Dashboards, plataformas SaaS e ferramentas internas que resolvem problemas reais do seu negócio.',
+            'Dashboards, plataformas internas e produtos digitais com estrutura escalável.',
     },
     {
         title: 'E-commerce',
         description:
-            'Lojas virtuais com checkout integrado, gestão de estoque e experiência de compra premium.',
+            'Lojas virtuais responsivas com experiência clara para navegação e compra.',
     },
 ]
-
-// ─── Links Sociais ────────────────────────
-// Atualize com seus links reais.
 
 export const socialLinks: SocialLink[] = [
     { label: 'E-mail', href: 'mailto:dev.wilker@gmail.com' },
@@ -186,20 +230,6 @@ export const socialLinks: SocialLink[] = [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/wilker-martins-dev' },
     { label: 'GitHub', href: 'https://github.com/WilkerGw' },
 ]
-
-// ─── Stats ────────────────────────────────
-
-import {
-    SiHtml5,
-    SiCss,
-    SiJavascript,
-    SiTypescript,
-    SiNodedotjs,
-    SiReact,
-    SiNextdotjs,
-    SiN8N,
-    SiTailwindcss
-} from 'react-icons/si'
 
 export const stats: Stat[] = [
     { icon: SiHtml5, label: 'HTML' },
@@ -213,27 +243,19 @@ export const stats: Stat[] = [
     { icon: SiN8N, label: 'N8n' },
 ]
 
-// ─── Navegação ────────────────────────────
-
 export const navLinks = [
-    { label: 'Sobre', href: '#about' },
-    { label: 'Skills', href: '#skills' },
+    { label: 'Início', href: '#home' },
     { label: 'Projetos', href: '#projects' },
-    { label: 'Serviços', href: '#services' },
-    { label: 'Contato', href: '#contact' },
+    { label: 'Contato', href: 'https://wa.me/5511967173625' },
 ]
-
-// ─── Marquee ──────────────────────────────
 
 export const marqueeItems = [
     'Next.js',
     'React',
     'TypeScript',
     'Node.js',
-    'PostgreSQL',
     'Tailwind CSS',
-    'Figma',
-    'Vercel',
-    'Docker',
-    'REST API',
+    'SEO',
+    'Performance',
+    'Responsivo',
 ]

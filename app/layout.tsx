@@ -1,13 +1,19 @@
 import type { Metadata } from 'next'
-import { Syne, DM_Mono } from 'next/font/google'
-import './globals.css'
-import Cursor from '@/components/Cursor'
-import ProgressBar from '@/components/ProgressBar'
+import { DM_Mono, Inter, Manrope } from 'next/font/google'
 import Navbar from '@/components/Navbar'
+import ProgressBar from '@/components/ProgressBar'
+import './globals.css'
 
-const syne = Syne({
+const manrope = Manrope({
   subsets: ['latin'],
-  variable: '--font-syne',
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-manrope',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -19,9 +25,9 @@ const dmMono = DM_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Wilker Martins — Desenvolvedor de Soluções Web',
+  title: 'Wilker Martins | Desenvolvedor Web',
   description:
-    'Portfólio de Wilker Martins, desenvolvedor web especializado em React, Next.js e soluções web modernas.',
+    'Portfolio de Wilker Martins, desenvolvedor web especializado em landing pages, sistemas e interfaces responsivas.',
 }
 
 export default function RootLayout({
@@ -30,9 +36,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`${syne.variable} ${dmMono.variable}`}>
-      <body className="bg-bg text-fg font-mono antialiased">
-        <Cursor />
+    <html lang="pt-BR" className={`${manrope.variable} ${inter.variable} ${dmMono.variable}`}>
+      <body className="bg-bg text-body antialiased" suppressHydrationWarning>
         <ProgressBar />
         <Navbar />
         {children}

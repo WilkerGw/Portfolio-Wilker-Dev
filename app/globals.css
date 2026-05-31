@@ -1,109 +1,187 @@
 @import "tailwindcss";
 
-/* ═══════════════════════════════════════════
-   DESIGN TOKENS — Tailwind v4 CSS-first
-   ═══════════════════════════════════════════ */
-
 @theme inline {
-    --color-bg: #060608;
-    --color-bg2: #0c0c10;
-    --color-fg: #f0ede8;
-    --color-muted: #6b6873;
-    --color-accent: #7cffcb;
-    --color-accent2: #ff6b6b;
+    --color-bg: #ffffff;
+    --color-bg2: #f8fbf6;
+    --color-surface: #f8fbf6;
+    --color-mint: #eef7ea;
+    --color-mint-strong: #dcefd4;
+    --color-accent: #679651;
+    --color-accent2: #679651;
+    --color-fg: #666666;
+    --color-title: #666666;
+    --color-muted: #8f8f8f;
+    --color-subtitle: #8f8f8f;
+    --color-body: #8f8f8f;
+    --color-line: #e5eedf;
 
-    --font-syne: "Syne", sans-serif;
-    --font-mono: "DM Mono", monospace;
-
-    --letter-spacing-widest2: 0.2em;
-    --letter-spacing-widest3: 0.25em;
+    --font-display: var(--font-manrope), Arial, Helvetica, sans-serif;
+    --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+    --font-syne: var(--font-manrope), Arial, Helvetica, sans-serif;
+    --font-mono: var(--font-dm-mono), monospace;
 }
 
-/* ═══════════════════════════════════════════
-   BASE
-   ═══════════════════════════════════════════ */
+:root {
+    --section-x: clamp(1.25rem, 4vw, 4rem);
+    --section-y: clamp(5rem, 10vw, 8.5rem);
+}
 
 html {
     scroll-behavior: smooth;
+    background: #ffffff;
 }
 
 body {
-    background: var(--color-bg);
-    color: var(--color-fg);
-    font-family: var(--font-mono);
-    cursor: none;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #ffffff;
+    color: var(--color-body);
+    font-family: var(--font-sans);
+}
+
+main {
+    overflow-x: hidden;
 }
 
 ::selection {
     background: var(--color-accent);
-    color: var(--color-bg);
+    color: #ffffff;
 }
 
 a,
 button {
-    cursor: none;
-}
-
-/* ═══════════════════════════════════════════
-   SCROLL REVEAL ANIMATIONS
-   ═══════════════════════════════════════════ */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(50px);
     transition:
-        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        color 180ms ease,
+        background-color 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease,
+        opacity 180ms ease;
 }
 
-.reveal-left {
-    opacity: 0;
-    transform: translateX(-60px);
-    transition:
-        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid rgba(103, 150, 81, 0.35);
+    outline-offset: 4px;
 }
 
-.reveal-right {
-    opacity: 0;
-    transform: translateX(60px);
-    transition:
-        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+.brand-pattern {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
 }
 
-.delay-1 {
-    transition-delay: 0.1s;
+.brand-pattern::before {
+    content: "";
+    position: absolute;
+    right: clamp(-7rem, -10vw, -3rem);
+    top: clamp(3rem, 9vw, 7rem);
+    width: clamp(18rem, 30vw, 34rem);
+    aspect-ratio: 1;
+    border: clamp(1.1rem, 2vw, 2rem) solid rgba(103, 150, 81, 0.08);
+    border-radius: 28% 72% 34% 66%;
+    transform: rotate(-18deg);
 }
 
-.delay-2 {
-    transition-delay: 0.2s;
+.brand-pattern::after {
+    content: "";
+    position: absolute;
+    left: clamp(-8rem, -12vw, -4rem);
+    bottom: clamp(-8rem, -12vw, -4rem);
+    width: clamp(18rem, 30vw, 32rem);
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, rgba(103, 150, 81, 0.1), rgba(103, 150, 81, 0));
+    clip-path: polygon(0 25%, 100% 0, 74% 100%, 0 78%);
 }
 
-.delay-3 {
-    transition-delay: 0.3s;
+.soft-grid {
+    background-image:
+        linear-gradient(rgba(103, 150, 81, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(103, 150, 81, 0.07) 1px, transparent 1px);
+    background-size: 54px 54px;
 }
 
-.delay-4 {
-    transition-delay: 0.4s;
+.project-watermark {
+    position: absolute;
+    right: clamp(-3rem, -4vw, -1rem);
+    top: 50%;
+    width: clamp(14rem, 22vw, 24rem);
+    aspect-ratio: 1;
+    border: 20px solid rgba(103, 150, 81, 0.07);
+    border-radius: 36px;
+    transform: translateY(-50%) rotate(16deg);
+    pointer-events: none;
 }
 
-.is-visible {
-    opacity: 1 !important;
-    transform: none !important;
+.project-watermark::before,
+.project-watermark::after {
+    content: "";
+    position: absolute;
+    background: rgba(103, 150, 81, 0.07);
+    border-radius: 999px;
 }
 
-/* ═══════════════════════════════════════════
-   ACCESSIBILITY
-   ═══════════════════════════════════════════ */
+.project-watermark::before {
+    width: 64%;
+    height: 12px;
+    left: 18%;
+    top: 26%;
+}
+
+.project-watermark::after {
+    width: 42%;
+    height: 12px;
+    right: -8%;
+    bottom: 24%;
+}
+
+@keyframes enter-up {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.enter-up {
+    animation: enter-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.scroll-enter {
+    animation: scroll-enter both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 28%;
+}
+
+@keyframes scroll-enter {
+    from {
+        opacity: 0.45;
+        transform: translateY(34px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@supports not (animation-timeline: view()) {
+    .scroll-enter {
+        animation: enter-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+}
 
 @media (prefers-reduced-motion: reduce) {
-
-    .reveal,
-    .reveal-left,
-    .reveal-right {
-        transition: none;
-        opacity: 1;
-        transform: none;
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
