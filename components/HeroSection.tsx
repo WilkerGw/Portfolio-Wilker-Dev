@@ -69,8 +69,7 @@ export default function HeroSection() {
                         variants={item}
                         className="my-4 max-w-2xl font-medium leading-6 text-subtitle text-[1rem]"
                     >
-                        Crio landing pages, sistemas web e interfaces responsivas com visual comercial,
-                        performance alta e experiência clara para transformar visitantes em contatos qualificados.
+                        Landing pages, sites intitucionais, chatbots de IA para transformar visitantes em contatos qualificados.
                     </motion.p>
 
                     <motion.div variants={item} className="my-2 flex flex-col gap-3 sm:flex-row">
@@ -97,8 +96,8 @@ export default function HeroSection() {
                             { icon: MousePointerClick, title: 'SEO', text: 'Conversão sem ruído' },
                         ].map((stat) => (
                             <div key={stat.title} className="lg:flex lg:items-center min-w-0 rounded-2xl border border-line bg-white/80 p-3 sm:p-4">
-                                <stat.icon className="mb-2 lg:mb-0 lg:mr-2 h-5 w-5 text-accent" aria-hidden="true" />
-                                <div className="">
+                                <stat.icon className="mb-2 mx-auto lg:mb-0 lg:mr-2 h-5 w-5 text-accent" aria-hidden="true" />
+                                <div className="text-center lg:text-start">
                                     <strong className="block text-[.8rem] font-extrabold leading-tight text-title">{stat.title}</strong>
                                     <span className="block text-[.8rem] font-medium leading-snug text-body">{stat.text}</span>
                                 </div>
@@ -161,7 +160,7 @@ export default function HeroSection() {
                                 initial={false}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.55 + index * 0.12, duration: 0.6 }}
-                                className={`absolute ${tag.className} whitespace-nowrap rounded-2xl border border-line bg-white/80 px-4 py-2 text-[.8rem] font-bold uppercase text-accent shadow-[0_16px_40px_rgba(103,150,81,0.13)]`}
+                                className={`absolute ${tag.className} whitespace-nowrap rounded-2xl border border-line px-4 py-2 text-[.8rem] font-bold uppercase text-accent shadow-[0_16px_40px_rgba(103,150,81,0.13)]`}
                             >
                                 {tag.label}
                             </motion.span>
