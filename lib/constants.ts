@@ -28,8 +28,11 @@ export interface Project {
     span: string
     link: string
     pattern: string
-    image: string
-    mobileImage: string
+    image?: string
+    mobileImage?: string
+    mockupImage?: string
+    mobileDesignPdf?: string
+    desktopDesignPdf?: string
 }
 
 export interface Skill {
@@ -82,8 +85,9 @@ export const projects: Project[] = [
         link: 'https://www.oticasvizz.com.br/',
         pattern:
             'linear-gradient(135deg, rgba(103,150,81,0.12), rgba(103,150,81,0.02))',
-        image: '/images/projects/site-vizz-desktop.webp',
-        mobileImage: '/images/projects/site-vizz-mobile.webp',
+        mockupImage: '/images/projects/site-vizz-mockup.webp',
+        mobileDesignPdf: '/images/projects/site-vizz-design-mobile.pdf',
+        desktopDesignPdf: '/images/projects/site-vizz-design-desktop.pdf',
     },
     {
         id: 2,
@@ -104,30 +108,11 @@ export const projects: Project[] = [
         link: 'https://lp-multimarcas.vercel.app/',
         pattern:
             'linear-gradient(135deg, rgba(103,150,81,0.1), rgba(103,150,81,0.025))',
-        image: '/images/projects/multimarcas-desktop.webp',
-        mobileImage: '/images/projects/multimarcas-mobile.webp',
-    },
-    {
-        id: 3,
-        kicker: 'Sistema de gestão',
-        title: 'Mind ERP',
-        result: 'Operação óptica centralizada em uma plataforma com estoque, PDV e atendimento.',
-        description:
-            'ERP para o setor óptico com controle de estoque, PDV, agendamentos, prontuários de optometria, ordens de serviço automatizadas e armazenamento seguro em nuvem.',
-        tags: ['.NET', 'React', 'Supabase', 'Tailwind CSS'],
-        highlights: ['Gestão de estoque', 'Prontuários', 'Nuvem segura'],
-        metrics: [
-            { value: 96, label: 'Segurança' },
-            { value: 100, label: 'Disponibilidade' },
-            { value: 94, label: 'Uptime' },
-            { value: 90, label: 'Eficiência' },
-        ],
-        span: 'col-span-12',
-        link: '#',
-        pattern:
-            'linear-gradient(135deg, rgba(103,150,81,0.11), rgba(103,150,81,0.018))',
-        image: '/images/projects/mind-erp-desktop.webp',
-        mobileImage: '/images/projects/mind-erp-mobile.webp',
+        image: '/images/projects/multimarcas-mockup.webp',
+        mobileImage: '/images/projects/multimarcas-mockup.webp',
+        mockupImage: '/images/projects/multimarcas-mockup.webp',
+        mobileDesignPdf: '/images/projects/multimarcas-designe-mobile-pdf.pdf',
+        desktopDesignPdf: '/images/projects/multimarcas-designe-desktop-pdf.pdf',
     },
     {
         id: 4,
@@ -150,28 +135,32 @@ export const projects: Project[] = [
             'linear-gradient(135deg, rgba(103,150,81,0.095), rgba(103,150,81,0.02))',
         image: '/images/projects/imob-premium-desktop.webp',
         mobileImage: '/images/projects/imob-premium-mobile.webp',
+        mockupImage: '/images/projects/imob-premium-mockup.webp',
+        mobileDesignPdf: '/images/projects/imob-premium-mobile.pdf',
+        desktopDesignPdf: '/images/projects/imob-premium-desktop.pdf',
     },
     {
         id: 5,
-        kicker: 'Loja virtual',
-        title: 'Loja Virtual Vizz',
-        result: 'Experiência de compra responsiva para vender com clareza em desktop e mobile.',
+        kicker: 'Moda feminina',
+        title: 'UHF Modas',
+        result: 'Vitrine digital com apelo visual para destacar coleções e facilitar o contato.',
         description:
-            'Interface de e-commerce com vitrine visual, leitura rápida dos produtos, fluxo direto para decisão de compra e adaptação consistente entre notebook e smartphone.',
-        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'E-commerce'],
-        highlights: ['Vitrine responsiva', 'Compra guiada', 'Visual comercial'],
+            'Landing page para moda feminina com foco em apresentação de peças, comunicação comercial clara e experiência responsiva para descoberta rápida em desktop e smartphone.',
+        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'UI/UX'],
+        highlights: ['Vitrine visual', 'Contato direto', 'Design responsivo'],
         metrics: [
-            { value: 98, label: 'Desempenho' },
+            { value: 100, label: 'Desempenho' },
             { value: 100, label: 'Acessibilidade' },
-            { value: 96, label: 'Boas práticas' },
+            { value: 100, label: 'Boas práticas' },
             { value: 100, label: 'SEO' },
         ],
         span: 'col-span-12',
-        link: '#',
+        link: 'https://uhf-modas.vercel.app/',
         pattern:
             'linear-gradient(135deg, rgba(103,150,81,0.12), rgba(103,150,81,0.016))',
-        image: '/images/projects/loja-virtual-vizz-desktop.webp',
-        mobileImage: '/images/projects/loja-virtual-vizz-mobile.webp',
+        mockupImage: '/images/projects/uhf-moda-mockup.webp',
+        mobileDesignPdf: '/images/projects/uhf-modas-design-mobile.pdf',
+        desktopDesignPdf: '/images/projects/uhf-modas-design-desktop.pdf',
     },
 ]
 

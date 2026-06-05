@@ -2,7 +2,14 @@
 
 import Image from 'next/image'
 import { motion, type Variants } from 'framer-motion'
-import { ArrowUpRight, CheckCircle2 } from 'lucide-react'
+import {
+    ChevronRight,
+    ExternalLink,
+    Globe2,
+    Monitor,
+    Smartphone,
+    type LucideIcon,
+} from 'lucide-react'
 import { Project, projects } from '@/lib/constants'
 
 const sectionVariants: Variants = {
@@ -23,173 +30,341 @@ const childVariants: Variants = {
     },
 }
 
-function ProjectMetric({ value, label }: { value: number; label: string }) {
+function ProjectAction({
+    href,
+    label,
+    icon: Icon,
+    variant = 'outline',
+    ariaLabel,
+}: {
+    href: string
+    label: string
+    icon: LucideIcon
+    variant?: 'outline' | 'solid'
+    ariaLabel: string
+}) {
+    const isSolid = variant === 'solid'
+
     return (
-        <div className="rounded-2xl border border-line bg-white px-4 py-4 shadow-[0_12px_30px_rgba(103,150,81,0.06)]">
-            <strong className="block text-3xl font-extrabold leading-none text-accent">{value}</strong>
-            <span className="mt-2 block text-[11px] font-bold uppercase leading-4 tracking-[0.12em] text-subtitle">
-                {label}
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={ariaLabel}
+            className={`group inline-flex min-h-[72px] w-full items-center justify-between gap-4 rounded-[1.75rem] px-6 py-4 lg:px-4 lg:py-2 text-sm font-extrabold uppercase tracking-[0.08em] shadow-[0_18px_38px_rgba(103,150,81,0.12)] ${
+                isSolid
+                    ? 'bg-accent text-white hover:-translate-y-0.5 hover:bg-title'
+                    : 'border border-title/35 bg-white/70 text-title backdrop-blur hover:-translate-y-0.5 hover:border-accent hover:text-accent'
+            }`}
+        >
+            <span className="inline-flex items-center gap-4">
+                <Icon className="h-5 w-5 shrink-0" strokeWidth={1.65} aria-hidden="true" />
+                <span>{label}</span>
             </span>
-        </div>
+            {isSolid ? (
+                <ChevronRight
+                    className="h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1"
+                    strokeWidth={1.9}
+                    aria-hidden="true"
+                />
+            ) : (
+                <ExternalLink
+                    className="h-6 w-6 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    strokeWidth={1.8}
+                    aria-hidden="true"
+                />
+            )}
+        </a>
     )
 }
 
-function ProjectMockup({ project }: { project: Project }) {
+function ProjectStatusAction({ label }: { label: string }) {
     return (
-        <div className="relative mx-auto w-full max-w-2xl">
-            <div className="absolute -left-6 top-10 h-28 w-28 rounded-full border-[18px] border-mint" aria-hidden="true" />
-            <div className="absolute -right-5 bottom-12 h-36 w-36 rounded-[2rem] bg-mint rotate-12" aria-hidden="true" />
-
-            <div
-                className="relative overflow-hidden rounded-[2rem] border border-line p-4 shadow-[0_28px_80px_rgba(103,150,81,0.13)]"
-                style={{ backgroundImage: project.pattern }}
-            >
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[1.45rem] border border-white bg-title shadow-[0_18px_46px_rgba(102,102,102,0.16)]">
-                    <div className="absolute left-0 right-0 top-0 z-10 flex h-8 items-center gap-2 border-b border-white/10 bg-[#2d2d2d] px-4">
-                        <span className="h-2.5 w-2.5 rounded-full bg-white/30" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-white/30" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-white/30" />
-                    </div>
-                    <Image
-                        src={project.image}
-                        alt={`Tela desktop do projeto ${project.title}`}
-                        fill
-                        sizes="(min-width: 1024px) 620px, 92vw"
-                        className="object-cover object-top"
-                    />
-                </div>
-
-                <div className="absolute bottom-0 right-7 w-[24%] min-w-[92px] translate-y-5 overflow-hidden rounded-t-[1.5rem] border-[6px] border-title bg-title shadow-[0_24px_50px_rgba(102,102,102,0.22)]">
-                    <div className="relative aspect-[9/19]">
-                        <Image
-                            src={project.mobileImage}
-                            alt={`Tela mobile do projeto ${project.title}`}
-                            fill
-                            sizes="160px"
-                            className="object-cover object-top"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
+        <span className="inline-flex min-h-[72px] w-full items-center justify-between gap-4 rounded-[1.75rem] border border-title/20 bg-white/60 px-6 py-4 text-sm font-extrabold uppercase tracking-[0.08em] text-subtitle shadow-[0_18px_38px_rgba(103,150,81,0.08)] sm:max-w-[344px]">
+            <span className="inline-flex items-center gap-4">
+                <Globe2 className="h-6 w-6 shrink-0" strokeWidth={1.65} aria-hidden="true" />
+                <span>{label}</span>
+            </span>
+            <ChevronRight className="h-6 w-6 shrink-0 opacity-35" strokeWidth={1.9} aria-hidden="true" />
+        </span>
     )
 }
 
-function ProjectShowcase({ project, index }: { project: Project; index: number }) {
+function ProjectMobileAction({
+    href,
+    label,
+    icon: Icon,
+    variant = 'outline',
+    ariaLabel,
+}: {
+    href: string
+    label: string
+    icon: LucideIcon
+    variant?: 'outline' | 'solid'
+    ariaLabel: string
+}) {
+    const isSolid = variant === 'solid'
+
+    return (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={ariaLabel}
+            className={`group inline-flex min-h-11 items-center justify-between gap-3 rounded-[0.7rem] px-4 text-[10px] font-bold uppercase tracking-[0.08em] ${
+                isSolid
+                    ? 'w-full max-w-32 bg-accent text-white shadow-[0_14px_30px_rgba(103,150,81,0.2)] hover:-translate-y-0.5 hover:bg-title'
+                    : 'w-full border border-title/55 bg-white/80 text-title backdrop-blur hover:-translate-y-0.5 hover:border-accent hover:text-accent'
+            }`}
+        >
+            <span className="inline-flex items-center gap-2">
+                <Icon className="h-4 w-4 shrink-0" strokeWidth={1.45} aria-hidden="true" />
+                <span>{label}</span>
+            </span>
+            {isSolid ? (
+                <ChevronRight
+                    className="h-6 w-6 shrink-0 transition-transform group-hover:translate-x-0.5"
+                    strokeWidth={1.75}
+                    aria-hidden="true"
+                />
+            ) : (
+                <ExternalLink
+                    className="h-6 w-6 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    strokeWidth={1.65}
+                    aria-hidden="true"
+                />
+            )}
+        </a>
+    )
+}
+
+function ProjectMobileStatusAction({ label }: { label: string }) {
+    return (
+        <span className="inline-flex min-h-11 w-full max-w-40 items-center justify-between gap-3 rounded-[0.7rem] border border-title/20 bg-white/70 px-4 text-[10px] font-bold uppercase tracking-[0.08em] text-subtitle backdrop-blur">
+            <span className="inline-flex items-center gap-2">
+                <Globe2 className="h-4 w-4 shrink-0" strokeWidth={1.45} aria-hidden="true" />
+                <span>{label}</span>
+            </span>
+            <ChevronRight className="h-6 w-6 shrink-0 opacity-35" strokeWidth={1.75} aria-hidden="true" />
+        </span>
+    )
+}
+
+function ProjectShowcase({ project, isFirst }: { project: Project; isFirst: boolean }) {
     const hasLiveLink = project.link !== '#'
+    const mockupImage = project.mockupImage ?? project.image ?? '/images/portfolio-mockup.webp'
+    const pdfActions = [
+        project.mobileDesignPdf
+            ? {
+                  href: project.mobileDesignPdf,
+                  label: 'Mobile',
+                  icon: Smartphone,
+                  ariaLabel: `Abrir o design mobile do projeto ${project.title} em PDF em uma nova aba`,
+              }
+            : null,
+        project.desktopDesignPdf
+            ? {
+                  href: project.desktopDesignPdf,
+                  label: 'Desktop',
+                  icon: Monitor,
+                  ariaLabel: `Abrir o design desktop do projeto ${project.title} em PDF em uma nova aba`,
+              }
+            : null,
+    ].filter(Boolean) as Array<{
+        href: string
+        label: string
+        icon: LucideIcon
+        ariaLabel: string
+    }>
 
     return (
         <motion.section
-            id={index === 0 ? 'projects' : `project-${project.id}`}
+            id={isFirst ? 'projects' : `project-${project.id}`}
             variants={sectionVariants}
             initial={false}
             whileInView="show"
             viewport={{ once: true, amount: 0.22 }}
-            className="scroll-enter relative isolate overflow-hidden border-t border-line bg-bg px-5 py-20 md:px-10 md:py-28"
+            className="scroll-enter relative isolate overflow-hidden bg-bg px-0 py-12 sm:px-5 md:px-10 md:py-24"
         >
-            <div className="project-watermark opacity-80" aria-hidden="true" />
-            <div className="absolute inset-x-0 bottom-0 h-28 bg-mint/55 [clip-path:polygon(0_55%,100%_8%,100%_100%,0_100%)]" aria-hidden="true" />
-
-            <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
-                <motion.div
-                    variants={{
-                        hidden: {},
-                        show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
-                    }}
-                    className="max-w-2xl"
-                >
-                    <motion.div variants={childVariants} className="mb-6 flex flex-wrap items-center gap-3">
-                        <span className="rounded-full bg-accent px-4 py-2 text-[12px] font-extrabold uppercase tracking-[0.14em] text-white">
-                            Projeto {String(project.id).padStart(2, '0')}
-                        </span>
-                        <span className="text-[12px] font-extrabold uppercase tracking-[0.14em] text-accent">
+            <div className="relative mx-auto overflow-hidden rounded-none bg-white shadow-none  lg:max-w-7xl lg:rounded-[2.2rem] lg:shadow-[0_30px_90px_rgba(103,150,81,0.08)]">
+                <div
+                    className="absolute inset-x-[-24%] bottom-0 h-[64%] bg-mint [clip-path:ellipse(78%_58%_at_50%_100%)] lg:hidden"
+                    aria-hidden="true"
+                />
+                {/* Mobile layout */}
+                <div className="relative z-10 px-4 pb-10 pt-4 lg:hidden">
+                    <motion.div
+                        variants={{
+                            hidden: {},
+                            show: { transition: { staggerChildren: 0.08, delayChildren: 0.04 } },
+                        }}
+                        className="relative mx-auto w-[calc(100%-3rem)] max-w-80 overflow-hidden rounded-lg bg-accent px-4 py-3"
+                    >
+                        <Image
+                            src="/images/logo.webp"
+                            alt=""
+                            width={220}
+                            height={220}
+                            className="absolute right-0 top-0 h-auto w-36 opacity-5"
+                        />
+                        <motion.span variants={childVariants} className="relative block text-[10px] font-medium leading-4 text-white">
                             {project.kicker}
-                        </span>
+                        </motion.span>
+                        <motion.h2
+                            variants={childVariants}
+                            className="relative mt-1 font-display text-2xl font-extrabold leading-none text-[#b9ff91]"
+                        >
+                            {project.title}
+                        </motion.h2>
+                        <motion.p variants={childVariants} className="relative mt-2 max-w-60 text-[11px] font-medium leading-4 text-white">
+                            {project.result}
+                        </motion.p>
                     </motion.div>
 
-                    <motion.h2
-                        variants={childVariants}
-                        className="font-display text-4xl font-extrabold leading-[1.08] text-title md:text-5xl lg:text-6xl"
-                    >
-                        {project.title}
-                    </motion.h2>
-
-                    <motion.p
-                        variants={childVariants}
-                        className="mt-5 text-xl font-extrabold leading-8 text-subtitle md:text-2xl"
-                    >
-                        {project.result}
-                    </motion.p>
-
-                    <motion.p variants={childVariants} className="mt-5 text-base font-medium leading-8 text-body">
-                        {project.description}
-                    </motion.p>
-
-                    <motion.ul variants={childVariants} className="mt-7 grid gap-3 sm:grid-cols-3">
-                        {project.highlights.map((highlight) => (
-                            <li
-                                key={highlight}
-                                className="flex items-start gap-3 rounded-2xl border border-line bg-white/80 p-4 text-sm font-bold leading-6 text-title"
-                            >
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
-                                {highlight}
-                            </li>
-                        ))}
-                    </motion.ul>
-
-                    <motion.div variants={childVariants} className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                        {project.metrics.map((metric) => (
-                            <ProjectMetric key={metric.label} value={metric.value} label={metric.label} />
-                        ))}
+                    <motion.div variants={childVariants} className="relative z-10 mt-7 flex justify-center">
+                        <Image
+                            src={mockupImage}
+                            alt={`Mockup do projeto ${project.title} em notebook e smartphone`}
+                            width={900}
+                            height={562}
+                            sizes="(max-width: 1023px) 390px"
+                            className="h-auto w-[108%] object-contain drop-shadow-[0_24px_38px_rgba(35,48,31,0.18)]"
+                        />
                     </motion.div>
 
-                    <motion.div variants={childVariants} className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center">
+                    <motion.div
+                        variants={childVariants}
+                        className="relative z-10 mx-auto mt-8 flex max-w-[306px] flex-col items-center gap-4"
+                        aria-label={`Ações do projeto ${project.title} no mobile`}
+                    >
+                        {pdfActions.length > 0 ? (
+                            <div className={`grid w-full gap-4 ${pdfActions.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                                {pdfActions.map((action) => (
+                                    <ProjectMobileAction
+                                        key={action.label}
+                                        href={action.href}
+                                        label={action.label}
+                                        icon={action.icon}
+                                        ariaLabel={action.ariaLabel}
+                                    />
+                                ))}
+                            </div>
+                        ) : null}
+
                         {hasLiveLink ? (
-                            <a
+                            <ProjectMobileAction
                                 href={project.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-accent px-7 py-4 text-sm font-extrabold uppercase tracking-[0.12em] text-white shadow-[0_16px_36px_rgba(103,150,81,0.22)] hover:-translate-y-0.5 hover:bg-title"
-                            >
-                                Visitar projeto <ArrowUpRight size={18} />
-                            </a>
+                                label="Ver"
+                                icon={Globe2}
+                                variant="solid"
+                                ariaLabel={`Abrir o projeto ${project.title} em uma nova aba`}
+                            />
                         ) : (
-                            <span className="inline-flex min-h-14 items-center justify-center rounded-full border border-line bg-white px-7 py-4 text-sm font-extrabold uppercase tracking-[0.12em] text-subtitle">
-                                Projeto em evolução
-                            </span>
+                            <ProjectMobileStatusAction label="Em breve" />
                         )}
-
-                        <div className="flex flex-wrap gap-2">
-                            {project.tags.map((tag) => (
-                                <span
-                                    key={tag}
-                                    className="rounded-full bg-mint px-3 py-2 text-[11px] font-extrabold uppercase tracking-[0.1em] text-accent"
-                                >
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
                     </motion.div>
-                </motion.div>
-
-                <motion.div
-                    variants={childVariants}
-                    initial={false}
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.22 }}
+                </div>
+                        
+                <div
+                    className="absolute inset-x-0 top-0 hidden h-[46%] min-h-[320px] rounded-[2.2rem] bg-accent lg:block"
+                    aria-hidden="true"
                 >
-                    <ProjectMockup project={project} />
-                </motion.div>
+                    <Image
+                        src="/images/logo.webp"
+                        alt=""
+                        width={700}
+                        height={700}
+                        className="absolute bottom-0 right-0 h-auto w-72 object-cover opacity-10 md:w-80 lg:w-160"
+                    />
+                </div>
+                <div
+                    className="absolute inset-x-[-24%] bottom-0 hidden h-[58%] bg-mint [clip-path:ellipse(72%_52%_at_54%_100%)] lg:block"
+                    aria-hidden="true"
+                />
+                <div className="relative z-10 hidden min-h-[720px] gap-8 px-6 pb-8 pt-10 sm:px-8 lg:grid lg:grid-cols-[360px_minmax(0,1fr)] lg:grid-rows-[auto_1fr] lg:px-14 lg:pb-12 lg:pt-12">
+                    <motion.div
+                        variants={{
+                            hidden: {},
+                            show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+                        }}
+                        className="order-1 flex min-w-0 flex-col lg:col-start-1 lg:row-start-1"
+                    >
+                        <motion.span variants={childVariants} className="max-w-2xl text-[1rem] leading-6 text-white">
+                            {project.kicker}
+                        </motion.span>
+
+                        <motion.h2
+                            variants={childVariants}
+                            className="font-display font-extrabold leading-[0.98] text-[#b9ff91] text-6xl lg:text-[4rem]"
+                        >
+                            {project.title}
+                        </motion.h2>
+
+                        <motion.p
+                            variants={childVariants}
+                            className="mt-4 max-w-2xl text-[1rem] leading-6 text-white"
+                        >
+                            {project.description}
+                        </motion.p>
+
+                        <motion.div
+                            variants={childVariants}
+                            className="mt-10 hidden flex-col gap-4 lg:mt-24 lg:flex"
+                            aria-label={`Ações do projeto ${project.title}`}
+                        >
+                            {pdfActions.map((action) => (
+                                <ProjectAction
+                                    key={action.label}
+                                    href={action.href}
+                                    label={action.label}
+                                    icon={action.icon}
+                                    ariaLabel={action.ariaLabel}
+                                />
+                            ))}
+
+                            {hasLiveLink ? (
+                                <ProjectAction
+                                    href={project.link}
+                                    label="Ver"
+                                    icon={Globe2}
+                                    variant="solid"
+                                    ariaLabel={`Abrir o projeto ${project.title} em uma nova aba`}
+                                />
+                            ) : (
+                                <ProjectStatusAction label="Em breve" />
+                            )}
+                        </motion.div>
+                    </motion.div>
+
+                    <motion.div
+                        variants={childVariants}
+                        className="relative flex items-start justify-center lg:min-h-0 lg:items-end lg:justify-end lg:pt-48"
+                    >
+                        <Image
+                            src={mockupImage}
+                            alt={`Mockup do projeto ${project.title} em notebook e smartphone`}
+                            width={900}
+                            height={562}
+                            sizes="(min-width: 1024px) 760px, 92vw"
+                            className="relative z-10 h-auto w-[70%] object-contain drop-shadow-[0_30px_45px_rgba(35,48,31,0.22)]"
+                        />
+                    </motion.div>
+                </div>
             </div>
         </motion.section>
     )
 }
 
 export default function ProjectsSection() {
+    const multimarcasProject = projects.find((project) => project.title === 'Multimarcas')
+    const orderedProjects = multimarcasProject
+        ? [multimarcasProject, ...projects.filter((project) => project.title !== 'Multimarcas')]
+        : projects
+
     return (
         <>
-            {projects.map((project, index) => (
-                <ProjectShowcase key={project.id} project={project} index={index} />
+            {orderedProjects.map((project, index) => (
+                <ProjectShowcase key={project.id} project={project} isFirst={index === 0} />
             ))}
         </>
     )

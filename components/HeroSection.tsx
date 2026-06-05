@@ -51,7 +51,7 @@ export default function HeroSection() {
                 >
                     <motion.div
                         variants={item}
-                        className="inline-flex max-w-full items-start gap-2 rounded-full py-1 text-[10px] font-extrabold uppercase leading-5 tracking-[0.04em] text-accent "
+                        className="inline-flex max-w-full items-start gap-2 rounded-full py-1 text-[.8rem] font-medium leading-5 tracking-[0.04em] text-accent "
                     >
                         <CheckCircle2 size={15} />
                         <span className="min-w-0 text-[.8rem]">Desenvolvedor web full stack</span>
@@ -67,7 +67,7 @@ export default function HeroSection() {
 
                     <motion.p
                         variants={item}
-                        className="my-4 max-w-2xl font-medium leading-6 text-subtitle text-[1rem]"
+                        className="my-4 max-w-2xl font-medium leading-6 text-subtitle text-[.8rem]"
                     >
                         Landing pages, sites intitucionais, chatbots de IA para transformar visitantes em contatos qualificados.
                     </motion.p>
@@ -75,7 +75,7 @@ export default function HeroSection() {
                     <motion.div variants={item} className="my-2 flex flex-col gap-3 sm:flex-row">
                         <a
                             href="#projects"
-                            className="inline-flex min-h-14 w-full max-w-[350px] items-center justify-center gap-3 rounded-full bg-accent px-8 py-4 text-sm font-extrabold uppercase tracking-[0.12em] text-white shadow-[0_16px_36px_rgba(103,150,81,0.25)] hover:-translate-y-0.5 hover:bg-title lg:w-auto lg:max-w-none"
+                            className="inline-flex min-h-14 w-full max-w-[350px] items-center justify-center gap-3 rounded-full bg-accent px-8 py-4 text-sm font-medium tracking-[0.12em] text-white shadow-[0_16px_36px_rgba(103,150,81,0.25)] hover:-translate-y-0.5 hover:bg-title lg:w-auto lg:max-w-none"
                         >
                             Ver projetos <ArrowRight size={18} />
                         </a>
@@ -83,7 +83,7 @@ export default function HeroSection() {
                             href="https://wa.me/5511967173625"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex min-h-14 w-full max-w-[350px] items-center justify-center gap-3 rounded-full border border-line bg-white px-8 py-4 text-sm font-extrabold uppercase tracking-[0.12em] text-title hover:-translate-y-0.5 hover:border-accent hover:text-accent lg:w-auto lg:max-w-none"
+                            className="inline-flex min-h-14 w-full max-w-[350px] items-center justify-center gap-3 rounded-full border border-line bg-white px-8 py-4 text-sm font-medium tracking-[0.12em] text-title hover:-translate-y-0.5 hover:border-accent hover:text-accent lg:w-auto lg:max-w-none"
                         >
                             Falar comigo <MessageCircle size={18} />
                         </a>
@@ -183,7 +183,7 @@ export default function HeroSection() {
                                 {heroTags.map((tag) => (
                                     <span
                                         key={`${groupIndex}-${tag}`}
-                                        className="whitespace-nowrap rounded-full bg-mint px-4 py-2 text-[12px] font-extrabold uppercase tracking-[0.12em] text-accent"
+                                        className="whitespace-nowrap rounded-full bg-mint px-4 py-2 text-[.7rem] font-medium tracking-[0.12em] text-accent"
                                     >
                                         {tag}
                                     </span>
