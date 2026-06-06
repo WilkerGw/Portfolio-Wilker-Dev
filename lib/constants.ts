@@ -11,9 +11,15 @@ import {
     SiTypescript,
 } from 'react-icons/si'
 
-export interface ProjectMetric {
-    value: number
+export type ProjectActionIcon = 'mobile' | 'desktop' | 'external'
+export type ProjectActionVariant = 'outline' | 'solid'
+
+export interface ProjectAction {
+    href: string
     label: string
+    icon: ProjectActionIcon
+    ariaLabel: string
+    variant?: ProjectActionVariant
 }
 
 export interface Project {
@@ -22,17 +28,8 @@ export interface Project {
     title: string
     result: string
     description: string
-    tags: string[]
-    highlights: string[]
-    metrics: ProjectMetric[]
-    span: string
-    link: string
-    pattern: string
-    image?: string
-    mobileImage?: string
     mockupImage?: string
-    mobileDesignPdf?: string
-    desktopDesignPdf?: string
+    actions: ProjectAction[]
 }
 
 export interface Skill {
@@ -73,21 +70,29 @@ export const projects: Project[] = [
         result: 'Conteúdo técnico transformado em uma experiência clara para venda consultiva.',
         description:
             'Página didática sobre lentes de grau, tratamentos e índices de refração, com chatbot de inteligência artificial, CTAs por seção e layout responsivo para capturar contatos qualificados.',
-        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Chatbot IA'],
-        highlights: ['Arquitetura SEO', 'CTA por seção', 'Design responsivo'],
-        metrics: [
-            { value: 100, label: 'Desempenho' },
-            { value: 100, label: 'Acessibilidade' },
-            { value: 100, label: 'Boas práticas' },
-            { value: 100, label: 'SEO' },
-        ],
-        span: 'col-span-12',
-        link: 'https://www.oticasvizz.com.br/',
-        pattern:
-            'linear-gradient(135deg, rgba(103,150,81,0.12), rgba(103,150,81,0.02))',
         mockupImage: '/images/projects/site-vizz-mockup.webp',
-        mobileDesignPdf: '/images/projects/site-vizz-design-mobile.pdf',
-        desktopDesignPdf: '/images/projects/site-vizz-design-desktop.pdf',
+        // Edite manualmente os botões deste projeto aqui.
+        actions: [
+            {
+                href: '/images/projects/site-vizz-design-mobile.pdf',
+                label: 'Mobile',
+                icon: 'mobile',
+                ariaLabel: 'Abrir o design mobile do projeto Óticas Vizz em PDF em uma nova aba',
+            },
+            {
+                href: '/images/projects/site-vizz-design-desktop.pdf',
+                label: 'Desktop',
+                icon: 'desktop',
+                ariaLabel: 'Abrir o design desktop do projeto Óticas Vizz em PDF em uma nova aba',
+            },
+            {
+                href: 'https://www.oticasvizz.com.br/',
+                label: 'Ver',
+                icon: 'external',
+                variant: 'solid',
+                ariaLabel: 'Abrir o projeto Óticas Vizz em uma nova aba',
+            },
+        ],
     },
     {
         id: 2,
@@ -96,23 +101,28 @@ export const projects: Project[] = [
         result: 'Interface focada em leads para transformar interesse em conversa pelo WhatsApp.',
         description:
             'Landing page automotiva com apresentação de estoque, filtros visuais, hierarquia direta e integração para contato rápido, mantendo performance e leitura simples em telas pequenas.',
-        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'WhatsApp'],
-        highlights: ['Fluxo de lead', 'Estoque escaneável', 'Mobile first'],
-        metrics: [
-            { value: 100, label: 'Desempenho' },
-            { value: 100, label: 'Acessibilidade' },
-            { value: 100, label: 'Boas práticas' },
-            { value: 100, label: 'SEO' },
-        ],
-        span: 'col-span-12',
-        link: 'https://lp-multimarcas.vercel.app/',
-        pattern:
-            'linear-gradient(135deg, rgba(103,150,81,0.1), rgba(103,150,81,0.025))',
-        image: '/images/projects/multimarcas-mockup.webp',
-        mobileImage: '/images/projects/multimarcas-mockup.webp',
         mockupImage: '/images/projects/multimarcas-mockup.webp',
-        mobileDesignPdf: '/images/projects/multimarcas-designe-mobile-pdf.pdf',
-        desktopDesignPdf: '/images/projects/multimarcas-designe-desktop-pdf.pdf',
+        actions: [
+            {
+                href: '/images/projects/multimarcas-designe-mobile-pdf.pdf',
+                label: 'Mobile',
+                icon: 'mobile',
+                ariaLabel: 'Abrir o design mobile do projeto Multimarcas em PDF em uma nova aba',
+            },
+            {
+                href: '/images/projects/multimarcas-designe-desktop-pdf.pdf',
+                label: 'Desktop',
+                icon: 'desktop',
+                ariaLabel: 'Abrir o design desktop do projeto Multimarcas em PDF em uma nova aba',
+            },
+            {
+                href: 'https://lp-multimarcas.vercel.app/',
+                label: 'Ver',
+                icon: 'external',
+                variant: 'solid',
+                ariaLabel: 'Abrir o projeto Multimarcas em uma nova aba',
+            },
+        ],
     },
     {
         id: 4,
@@ -121,23 +131,28 @@ export const projects: Project[] = [
         result: 'Busca imobiliária elegante para imóveis de alto padrão em São Paulo.',
         description:
             'Plataforma imobiliária com curadoria de imóveis, filtros dinâmicos, integração com WhatsApp, blog de conteúdo e perfis de corretores especializados.',
-        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'SEO'],
-        highlights: ['Filtros dinâmicos', 'Blog integrado', 'Perfis de corretores'],
-        metrics: [
-            { value: 100, label: 'Desempenho' },
-            { value: 100, label: 'Acessibilidade' },
-            { value: 100, label: 'Boas práticas' },
-            { value: 100, label: 'SEO' },
-        ],
-        span: 'col-span-12',
-        link: 'https://imob-premium-delta.vercel.app/',
-        pattern:
-            'linear-gradient(135deg, rgba(103,150,81,0.095), rgba(103,150,81,0.02))',
-        image: '/images/projects/imob-premium-desktop.webp',
-        mobileImage: '/images/projects/imob-premium-mobile.webp',
         mockupImage: '/images/projects/imob-premium-mockup.webp',
-        mobileDesignPdf: '/images/projects/imob-premium-mobile.pdf',
-        desktopDesignPdf: '/images/projects/imob-premium-desktop.pdf',
+        actions: [
+            {
+                href: '/images/projects/imob-premium-mobile.pdf',
+                label: 'Mobile',
+                icon: 'mobile',
+                ariaLabel: 'Abrir o design mobile do projeto ImobPremium em PDF em uma nova aba',
+            },
+            {
+                href: '/images/projects/imob-premium-desktop.pdf',
+                label: 'Desktop',
+                icon: 'desktop',
+                ariaLabel: 'Abrir o design desktop do projeto ImobPremium em PDF em uma nova aba',
+            },
+            {
+                href: 'https://imob-premium-delta.vercel.app/',
+                label: 'Ver',
+                icon: 'external',
+                variant: 'solid',
+                ariaLabel: 'Abrir o projeto ImobPremium em uma nova aba',
+            },
+        ],
     },
     {
         id: 5,
@@ -146,21 +161,28 @@ export const projects: Project[] = [
         result: 'Vitrine digital com apelo visual para destacar coleções e facilitar o contato.',
         description:
             'Landing page para moda feminina com foco em apresentação de peças, comunicação comercial clara e experiência responsiva para descoberta rápida em desktop e smartphone.',
-        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'UI/UX'],
-        highlights: ['Vitrine visual', 'Contato direto', 'Design responsivo'],
-        metrics: [
-            { value: 100, label: 'Desempenho' },
-            { value: 100, label: 'Acessibilidade' },
-            { value: 100, label: 'Boas práticas' },
-            { value: 100, label: 'SEO' },
-        ],
-        span: 'col-span-12',
-        link: 'https://uhf-modas.vercel.app/',
-        pattern:
-            'linear-gradient(135deg, rgba(103,150,81,0.12), rgba(103,150,81,0.016))',
         mockupImage: '/images/projects/uhf-moda-mockup.webp',
-        mobileDesignPdf: '/images/projects/uhf-modas-design-mobile.pdf',
-        desktopDesignPdf: '/images/projects/uhf-modas-design-desktop.pdf',
+        actions: [
+            {
+                href: '/images/projects/uhf-modas-design-mobile.pdf',
+                label: 'Mobile',
+                icon: 'mobile',
+                ariaLabel: 'Abrir o design mobile do projeto UHF Modas em PDF em uma nova aba',
+            },
+            {
+                href: '/images/projects/uhf-modas-design-desktop.pdf',
+                label: 'Desktop',
+                icon: 'desktop',
+                ariaLabel: 'Abrir o design desktop do projeto UHF Modas em PDF em uma nova aba',
+            },
+            {
+                href: 'https://uhf-modas.vercel.app/',
+                label: 'Ver',
+                icon: 'external',
+                variant: 'solid',
+                ariaLabel: 'Abrir o projeto UHF Modas em uma nova aba',
+            },
+        ],
     },
 ]
 

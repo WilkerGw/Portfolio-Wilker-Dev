@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { motion, useReducedMotion, type Variants } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform, type Variants } from 'framer-motion'
 import { ArrowRight, CheckCircle2, Gauge, MessageCircle, MousePointerClick, Smartphone } from 'lucide-react'
 import { heroTags } from '@/lib/constants'
 
@@ -35,6 +35,9 @@ const marqueeGroups = Array.from({ length: 6 }, (_, index) => index)
 
 export default function HeroSection() {
     const shouldReduceMotion = useReducedMotion()
+    const { scrollYProgress } = useScroll()
+    const heroVisualY = useTransform(scrollYProgress, [0, 0.22], [0, 38])
+    const heroVisualScale = useTransform(scrollYProgress, [0, 0.22], [1, 0.97])
 
     return (
         <section
@@ -45,9 +48,9 @@ export default function HeroSection() {
             <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-4 lg:grid-cols-[1.02fr_0.98fr]">
                 <motion.div
                     variants={container}
-                    initial={false}
+                    initial="hidden"
                     animate="show"
-                    className="enter-up w-full min-w-0 max-w-[calc(100vw-2.5rem)] md:max-w-3xl text-center lg:text-start"
+                    className="w-full min-w-0 max-w-[calc(100vw-2.5rem)] md:max-w-3xl text-center lg:text-start"
                 >
                     <motion.div
                         variants={item}
@@ -107,10 +110,14 @@ export default function HeroSection() {
                 </motion.div>
 
                 <motion.div
-                    initial={false}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.9, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                    className="lg:ml-30 enter-up relative mx-auto w-full min-w-0 max-w-[560px]"
+                    style={{
+                        y: shouldReduceMotion ? 0 : heroVisualY,
+                        scale: shouldReduceMotion ? 1 : heroVisualScale,
+                    }}
+                    className="lg:ml-30 relative mx-auto w-full min-w-0 max-w-[560px]"
                 >
                     <div className="absolute left-8 right-8 top-0 h-24 rounded-full blur-2xl" aria-hidden="true" />
                     <div className="relative min-h-[520px] rounded-[2rem]">
@@ -157,8 +164,8 @@ export default function HeroSection() {
                         {floatingLabels.map((tag, index) => (
                             <motion.span
                                 key={tag.label}
-                                initial={false}
-                                animate={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, y: 14, scale: 0.96 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
                                 transition={{ delay: 0.55 + index * 0.12, duration: 0.6 }}
                                 className={`absolute ${tag.className} whitespace-nowrap rounded-2xl border border-line px-4 py-2 text-[.8rem] font-bold uppercase text-accent shadow-[0_16px_40px_rgba(103,150,81,0.13)]`}
                             >

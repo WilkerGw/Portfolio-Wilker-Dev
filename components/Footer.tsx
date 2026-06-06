@@ -1,5 +1,6 @@
 import { ArrowUp, Mail, MessageCircle } from 'lucide-react'
 import { socialLinks } from '@/lib/constants'
+import ScrollReveal from './ScrollReveal'
 
 export default function Footer() {
     return (
@@ -7,7 +8,7 @@ export default function Footer() {
             <div className="brand-pattern opacity-70" aria-hidden="true" />
 
             <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-10 md:flex-row md:items-end md:justify-between">
-                <div className="max-w-2xl">
+                <ScrollReveal className="max-w-2xl">
                     <span className="text-[12px] font-extrabold uppercase tracking-[0.16em] text-accent">
                         Vamos tirar seu projeto do papel?
                     </span>
@@ -32,9 +33,9 @@ export default function Footer() {
                             Enviar e-mail
                         </a>
                     </div>
-                </div>
+                </ScrollReveal>
 
-                <div className="flex flex-col gap-6 md:items-end">
+                <ScrollReveal className="flex flex-col gap-6 md:items-end" delay={0.12}>
                     <div className="flex flex-wrap gap-2 md:justify-end">
                         {socialLinks.map((link) => (
                             <a
@@ -59,7 +60,7 @@ export default function Footer() {
                             Voltar ao topo <ArrowUp size={16} />
                         </a>
                     </div>
-                </div>
+                </ScrollReveal>
             </div>
         </footer>
     )
