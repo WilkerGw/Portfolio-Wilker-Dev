@@ -29,23 +29,24 @@ const actionIcons: Record<ProjectActionIcon, LucideIcon> = {
 }
 
 // Animação aplicada em cada seção completa quando ela entra na tela.
+// O container fica visível desde o início para evitar "vão branco" durante o scroll.
 const sectionVariants: Variants = {
-    hidden: { opacity: 0, y: 52, scale: 0.985 },
+    hidden: { opacity: 1, y: 20, scale: 0.995 },
     show: {
         opacity: 1,
         y: 0,
         scale: 1,
-        transition: { duration: 0.78, ease: [0.16, 1, 0.3, 1] },
+        transition: { duration: 0.62, ease: [0.16, 1, 0.3, 1] },
     },
 }
 
 // Animação aplicada nos elementos internos, criando entrada suave em cascata.
 const childVariants: Variants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 18 },
     show: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.62, ease: [0.16, 1, 0.3, 1] },
+        transition: { duration: 0.72, ease: [0.16, 1, 0.3, 1] },
     },
 }
 
@@ -54,10 +55,10 @@ const childVariants: Variants = {
 const titleVariants: Variants = {
     hidden: {
         opacity: 0,
-        x: -18,
-        y: 42,
-        scale: 0.94,
-        filter: 'blur(8px)',
+        x: -14,
+        y: 28,
+        scale: 0.97,
+        filter: 'blur(6px)',
     },
     show: {
         opacity: 1,
@@ -65,7 +66,7 @@ const titleVariants: Variants = {
         y: 0,
         scale: 1,
         filter: 'blur(0px)',
-        transition: { duration: 0.82, ease: [0.16, 1, 0.3, 1] },
+        transition: { duration: 0.86, ease: [0.16, 1, 0.3, 1] },
     },
 }
 
@@ -73,7 +74,7 @@ const titleVariants: Variants = {
 const buttonGroupVariants: Variants = {
     hidden: {},
     show: {
-        transition: { staggerChildren: 0.1, delayChildren: 0.14 },
+        transition: { staggerChildren: 0.08, delayChildren: 0.04 },
     },
 }
 
@@ -81,10 +82,10 @@ const buttonGroupVariants: Variants = {
 const buttonVariants: Variants = {
     hidden: {
         opacity: 0,
-        x: -28,
-        y: 14,
-        scale: 0.9,
-        filter: 'blur(4px)',
+        x: -18,
+        y: 10,
+        scale: 0.94,
+        filter: 'blur(3px)',
     },
     show: {
         opacity: 1,
@@ -92,7 +93,7 @@ const buttonVariants: Variants = {
         y: 0,
         scale: 1,
         filter: 'blur(0px)',
-        transition: { duration: 0.58, ease: [0.16, 1, 0.3, 1] },
+        transition: { duration: 0.68, ease: [0.16, 1, 0.3, 1] },
     },
 }
 
@@ -101,9 +102,9 @@ const buttonVariants: Variants = {
 const desktopButtonVariants: Variants = {
     hidden: {
         opacity: 1,
-        x: -24,
-        y: 12,
-        scale: 0.96,
+        x: -16,
+        y: 10,
+        scale: 0.97,
         filter: 'blur(2px)',
     },
     show: {
@@ -112,7 +113,7 @@ const desktopButtonVariants: Variants = {
         y: 0,
         scale: 1,
         filter: 'blur(0px)',
-        transition: { duration: 0.58, ease: [0.16, 1, 0.3, 1] },
+        transition: { duration: 0.68, ease: [0.16, 1, 0.3, 1] },
     },
 }
 
@@ -120,11 +121,11 @@ const desktopButtonVariants: Variants = {
 const mockupVariants: Variants = {
     hidden: {
         opacity: 0,
-        x: 56,
-        y: 34,
-        rotate: -3,
-        scale: 0.9,
-        filter: 'blur(8px)',
+        x: 34,
+        y: 24,
+        rotate: -2,
+        scale: 0.94,
+        filter: 'blur(6px)',
     },
     show: {
         opacity: 1,
@@ -133,7 +134,7 @@ const mockupVariants: Variants = {
         rotate: 0,
         scale: 1,
         filter: 'blur(0px)',
-        transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+        transition: { duration: 0.96, ease: [0.16, 1, 0.3, 1] },
     },
 }
 
@@ -318,7 +319,7 @@ function MobileProjectCard({ project }: { project: Project }) {
         <motion.div
             variants={{
                 hidden: {},
-                show: { transition: { staggerChildren: 0.08, delayChildren: 0.04 } },
+                show: { transition: { staggerChildren: 0.08 } },
             }}
             className="relative mx-auto w-[calc(100%-3rem)] max-w-80 overflow-hidden rounded-lg bg-accent px-4 py-3 md:max-w-96 md:px-5 md:py-4"
         >
@@ -397,7 +398,7 @@ function DesktopProjectLayout({ project }: { project: Project }) {
             <motion.div
                 variants={{
                     hidden: {},
-                    show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+                    show: { transition: { staggerChildren: 0.09 } },
                 }}
                 className="order-1 flex min-w-0 flex-col lg:col-start-1 lg:row-start-1"
             >
@@ -446,7 +447,7 @@ function ProjectShowcase({ project, isFirst }: { project: Project; isFirst: bool
             variants={sectionVariants}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: false, amount: 0.42, margin: '0px 0px -20% 0px' }}
+            viewport={{ once: false, amount: 0.18, margin: '0px 0px -6% 0px' }}
             className="relative isolate overflow-hidden bg-bg px-0 py-12 md:px-6 md:py-20 lg:px-10 lg:py-24"
         >
             <div className="relative mx-auto overflow-hidden rounded-none bg-white shadow-none md:max-w-[560px] md:rounded-[1.5rem] lg:max-w-7xl lg:rounded-[2.2rem] lg:shadow-[0_30px_90px_rgba(103,150,81,0.08)]">
