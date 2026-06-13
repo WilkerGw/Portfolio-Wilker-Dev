@@ -63,34 +63,34 @@ export const heroTags = [
 ]
 
 export const projects: Project[] = [
-    {
+
+        {
         id: 1,
-        kicker: 'Landing page educacional',
-        title: 'Óticas Vizz',
-        result: 'Conteúdo técnico transformado em uma experiência clara para venda consultiva.',
+        kicker: 'Bebida Energética',
+        title: 'Volt Energético',
+        result: 'Landing Page para apresentar o produto, seus diferenciais e incentivar a compra.',
         description:
-            'Página didática sobre lentes de grau, tratamentos e índices de refração, com chatbot de inteligência artificial, CTAs por seção e layout responsivo para capturar contatos qualificados.',
-        mockupImage: '/images/projects/site-vizz-mockup.webp',
-        // Edite manualmente os botões deste projeto aqui.
+            'Landing page moderna, com designe chamativo e animações de entrada, saída e scroll. Foco em apresentar o produto, seus diferenciais e incentivar a compra.',
+        mockupImage: '/images/projects/volt-mockup.webp',
         actions: [
             {
-                href: '/images/projects/site-vizz-design-mobile.pdf',
+                href: '/images/projects/volt-design-mobile.pdf',
                 label: 'Mobile',
                 icon: 'mobile',
-                ariaLabel: 'Abrir o design mobile do projeto Óticas Vizz em PDF em uma nova aba',
+                ariaLabel: 'Abrir o design mobile do projeto Volt Energético em PDF em uma nova aba',
             },
             {
-                href: '/images/projects/site-vizz-design-desktop.pdf',
+                href: '/images/projects/volt-design-desktop.pdf',
                 label: 'Desktop',
                 icon: 'desktop',
-                ariaLabel: 'Abrir o design desktop do projeto Óticas Vizz em PDF em uma nova aba',
+                ariaLabel: 'Abrir o design desktop do projeto Volt Energético em PDF em uma nova aba',
             },
             {
-                href: 'https://www.oticasvizz.com.br/',
+                href: 'https://volt-energetico.vercel.app/',
                 label: 'Ver',
                 icon: 'external',
                 variant: 'solid',
-                ariaLabel: 'Abrir o projeto Óticas Vizz em uma nova aba',
+                ariaLabel: 'Abrir o projeto Volt Energético em uma nova aba',
             },
         ],
     },
@@ -184,6 +184,37 @@ export const projects: Project[] = [
             },
         ],
     },
+        {
+        id: 6,
+        kicker: 'Landing page educacional',
+        title: 'Óticas Vizz',
+        result: 'Conteúdo técnico transformado em uma experiência clara para venda consultiva.',
+        description:
+            'Página didática sobre lentes de grau, tratamentos e índices de refração, com chatbot de inteligência artificial, CTAs por seção e layout responsivo para capturar contatos qualificados.',
+        mockupImage: '/images/projects/site-vizz-mockup.webp',
+        // Edite manualmente os botões deste projeto aqui.
+        actions: [
+            {
+                href: '/images/projects/site-vizz-design-mobile.pdf',
+                label: 'Mobile',
+                icon: 'mobile',
+                ariaLabel: 'Abrir o design mobile do projeto Óticas Vizz em PDF em uma nova aba',
+            },
+            {
+                href: '/images/projects/site-vizz-design-desktop.pdf',
+                label: 'Desktop',
+                icon: 'desktop',
+                ariaLabel: 'Abrir o design desktop do projeto Óticas Vizz em PDF em uma nova aba',
+            },
+            {
+                href: 'https://www.oticasvizz.com.br/',
+                label: 'Ver',
+                icon: 'external',
+                variant: 'solid',
+                ariaLabel: 'Abrir o projeto Óticas Vizz em uma nova aba',
+            },
+        ],
+    },    
 ]
 
 export const skills: Skill[] = [

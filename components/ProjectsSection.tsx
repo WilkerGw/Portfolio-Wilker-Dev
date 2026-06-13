@@ -147,7 +147,7 @@ function getProjectMockup(project: Project) {
 // Ordena os projetos antes da renderização.
 // A Multimarcas fica em primeiro porque o menu "Projetos" aponta para #projects.
 function getOrderedProjects() {
-    const featuredProject = projects.find((project) => project.title === 'Multimarcas')
+    const featuredProject = projects.find((project) => project.title === 'Volt Energético')
 
     if (!featuredProject) {
         return projects
